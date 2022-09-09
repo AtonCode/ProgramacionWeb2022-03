@@ -1,0 +1,21 @@
+<app-nabvar></app-nabvar>
+<app-search></app-search>
+<table>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let materia of materias ">
+        <td>{{materia.id}}</td>
+        <td>{{materia.username}}</td>
+        <td><button id="button_delate" (click)="buttonClick_eliminar(materia)">Delete</button></td>
+        <td><button id="button_edit" (click)="buttonClick_edit()">Edit</button></td>
+      </tr>
+    </tbody>
+</table>
+
+<button id="button_add" (click)="buttonClick_register()">Add</button>

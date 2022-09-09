@@ -1,0 +1,18 @@
+.notFound{
+    text-align: center;
+    margin-top: 20%;
+    color: black;
+    font-size-adjust: 100%;
+
+}
+button{
+    background-color: rgb(29, 149, 255);
+    border-radius: 10px;
+    border: 1px solid  rgb(29, 149, 255);
+    color: white;
+    font-size-adjust: 100%;
+    padding: 10px;
+    margin-top: 10px;
+
+    
+}
