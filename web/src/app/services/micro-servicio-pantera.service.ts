@@ -25,7 +25,7 @@ export class MicroServicioPanteraService {
   }
 
   getToken(materia: Pantera){
-    return this._httpClient.post('http://10.195.44.218:8080/authenticate', materia)
+    return this._httpClient.post('http://100.96.1.4:8080/authenticate', materia)
   }
 
   login(materia: Pantera){
@@ -55,7 +55,7 @@ export class MicroServicioPanteraService {
   // make a request to the server whit the token
   protectedRequestALL() {
     var options = this.makeOptions();
-    return this._httpClient.get<Pantera[]>('http://10.195.44.218:8080/pantera', options);
+    return this._httpClient.get<Pantera[]>('http://100.96.1.4:8080/pantera', options);
   }
   
 
@@ -64,25 +64,25 @@ export class MicroServicioPanteraService {
         .set('Authorization', 'Bearer ' + localStorage.getItem('token'));
     const options = { headers: headers };
     console.log(options.headers);
-    return this._httpClient.get<Pantera[]>('http://10.195.44.218:8080/pantera', options);
+    return this._httpClient.get<Pantera[]>('http://100.96.1.4:8080/pantera', options);
   }
 
   protectedPostMateria(materia: Pantera){
     const headers = new HttpHeaders()
             .set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this._httpClient.post('http://10.195.44.218:8080/pantera', materia, {headers});
+    return this._httpClient.post('http://100.96.1.4:8080/pantera', materia, {headers});
   }
 
   protectedDeleteMateria(materia: Pantera){
     const headers = new HttpHeaders()
             .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this._httpClient.delete('http://10.195.44.218:8080/pantera/' + materia.id, {headers});
+    return this._httpClient.delete('http://100.96.1.4:8080/pantera/' + materia.id, {headers});
   }
 
   protectedGetMateria(id: String){
     const headers = new HttpHeaders()
             .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this._httpClient.get<Pantera>('http://10.195.44.218:8080/pantera/" + id', {headers});
+    return this._httpClient.get<Pantera>('http://100.96.1.4:8080/pantera/" + id', {headers});
   }
 
   validarToken(){
