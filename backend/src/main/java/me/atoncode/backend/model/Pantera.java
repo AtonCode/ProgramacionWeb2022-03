@@ -5,6 +5,8 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @Getter
 @Setter
@@ -15,4 +17,6 @@ public class Pantera {
     @Id
     private int id;
     private String username;
+    @JsonIgnore
+    private String password;
 }
