@@ -3,10 +3,9 @@ export class Pantera{
     username:String;
     password:String;
 
-    
-    constructor(id:String, nombre:String,_contrasena:String){
-        this.id=id;
-        this.username=nombre;
+    constructor(_id:String, _nombre:String, _contrasena:String){
+        this.id=_id;
+        this.username=_nombre;
         this.password=_contrasena;
     }
 }

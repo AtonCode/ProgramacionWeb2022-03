@@ -17,25 +17,29 @@ export class HomeComponent implements OnInit {
   
   constructor(_materiaService: MicroServicioPanteraService, private router: Router) { 
     this._materiaService = _materiaService;
-    //_materiaService.getAll().subscribe(res => this.materias = res);
-    _materiaService.protectedRequestALL().subscribe(res => this.materias = res);
+    _materiaService.getAll().subscribe(res => this.materias = res);
+    //_materiaService.protectedRequestALL().subscribe(res => this.materias = res);
     this.pageTitle = router.url.replace("/", "").toUpperCase();
    
   }
   ngOnInit(): void {
     
   }
-  buttonClick_edit(){
+  buttonClick_edit(panteraEditar: Pantera){
     //Redirigir a componete edit
     this.router.navigate(['edit']);
+    //Enviar panteraEditar a editar
+    this._materiaService.panteraEditar = panteraEditar;
+
     
   }
   buttonClick_eliminar(materia: Pantera){
     console.log(materia.username);
     //Eliminar de la base de datos
-    const NewMateria = new Pantera(materia.id, materia.username, materia.password);
-    this._materiaService.protectedDeleteMateria(NewMateria).subscribe();
+    var NewMateria = new Pantera(materia.id, materia.username, materia.password);
+    this._materiaService.deleteMateria(NewMateria).subscribe();
     this.materias = this.materias.filter(c => c.id !== NewMateria.id);
+
   }
   buttonClick_register(){
     //Redirigir a componete edit

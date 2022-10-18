@@ -51,13 +51,14 @@ public class JwtAuthenticationController {
 	}
 
 
-	@GetMapping("/{pantera}")
+	@GetMapping("/pantera")
 	public List<Pantera> EncontrarTodos(){return panteraService.BuscarTodos();}
-	@GetMapping("/{pantera}/{id}")
+	
+	@GetMapping("/pantera/{id}")
 	public Pantera BuscarPantera(@PathVariable("id")int id){
 		return panteraService.BuscarPantera(id);
 	}
-	@DeleteMapping("/{pantera}/{id}")
+	@DeleteMapping("/pantera/{id}")
 	public boolean EliminarPantera(@PathVariable("id") int id){return panteraService.EliminarPantera(id);}
 
 	private void authenticate(String username, String password) throws Exception {

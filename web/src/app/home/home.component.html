@@ -1,5 +1,5 @@
 <app-nabvar></app-nabvar>
-<app-search></app-search>
+
 <table>
     <thead>
       <tr>
@@ -13,7 +13,7 @@
         <td>{{materia.id}}</td>
         <td>{{materia.username}}</td>
         <td><button id="button_delate" (click)="buttonClick_eliminar(materia)">Delete</button></td>
-        <td><button id="button_edit" (click)="buttonClick_edit()">Edit</button></td>
+        <td><button id="button_edit" (click)="buttonClick_edit(materia)">Edit</button></td>
       </tr>
     </tbody>
 </table>

@@ -8,9 +8,8 @@
             </div>
             <div class="card-body">
                 <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-                    Id: <input name="id" type="number" ngModel required #first="ngModel">
-                    Name: <input name="username" ngModel>
-                    Password: <input name="password" ngModel>
+                    New Name: <input name="username" ngModel>
+                    New Password: <input name="password" ngModel>
                     <button>Send Edit</button>
                 </form>
             </div>

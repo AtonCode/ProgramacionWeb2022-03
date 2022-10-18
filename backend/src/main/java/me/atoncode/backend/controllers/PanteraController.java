@@ -9,18 +9,34 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/pantera")
+
+
 public class PanteraController {
+
     @Autowired
-    private final PanteraService servicio;
-    @GetMapping
-    public List<Pantera> EncontrarTodos(){return servicio.BuscarTodos();}
-    @GetMapping("/{id}")
+    private PanteraService panteraService;
+
+    @GetMapping("/pantera")
+    public List<Pantera> EncontrarTodos(){return panteraService.BuscarTodos();}
+
+    @GetMapping("/pantera/{id}")
     public Pantera BuscarPantera(@PathVariable("id")int id){
-        return servicio.BuscarPantera(id);
+        return panteraService.BuscarPantera(id);
     }
-    @PostMapping(consumes="application/json")
-    public Pantera CrearPantera(@RequestBody Pantera pantera){return servicio.CrearPantera(pantera);}
-    @DeleteMapping("/{id}")
-    public boolean EliminarProducto(@PathVariable("id") int id){return servicio.EliminarPantera(id);}
+    @GetMapping("/pantera/maxId")
+    //Devolver el numero de panteras
+    public int NumeroPanteras(){
+        return panteraService.NumeroPanteras();
+    }
+
+    @PostMapping("/pantera/register")
+    public Pantera CrearPantera(@RequestBody Pantera pantera){
+        return panteraService.CrearPantera(pantera);
+    }
+
+    @DeleteMapping("/pantera/delete/{id}")
+    public void EliminarPantera(@PathVariable("id")int id){
+        panteraService.EliminarPantera(id);
+    }
+    
 }

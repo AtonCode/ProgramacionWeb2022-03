@@ -26,7 +26,7 @@ panteras: Pantera[] = [];
   }
 
   getPantera() {
-    this.microservicesRestApi?.protectedGetMateria(this.username).subscribe(res => this.pantera = res);
+    this.microservicesRestApi?.getMateria("00").subscribe(response => this.panteras.push(response));
     this.panteras.push(this.pantera);
     console.log(this.pantera.username);
   }

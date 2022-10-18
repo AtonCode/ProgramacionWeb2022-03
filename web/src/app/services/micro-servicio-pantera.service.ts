@@ -5,37 +5,67 @@ import { Pantera } from '../models/Pantera';
   providedIn: 'root'
 })
 export class MicroServicioPanteraService {
-  constructor(private _httpClient: HttpClient) { }
+  panteras: Pantera[]=[];
+  panteraLogin: Pantera = new Pantera("","","");
+  panteraEditar: Pantera = new Pantera("","","");
+  cantidadPanteras: number = 0;
+
+  constructor(private _httpClient: HttpClient) {
+    this.getAll().subscribe(response => this.panteras = response);
+    this.cantidadPanteras = this.panteras.length;
+  }
 
   getAll() {
-    return this._httpClient.get<Pantera[]>('http://10.195.44.218:8080/pantera');
+    return this._httpClient.get<Pantera[]>('http://localhost:8080/pantera');
   }
 
   getMateria(id: String) {
-    return this._httpClient.get<Pantera>('http://10.195.44.218:8080/pantera/' + id);
+    return this._httpClient.get<Pantera>('http://localhost:8080/pantera/' + id);
   }
 
   addMateria(materia: Pantera) {
-    return this._httpClient.post('http://10.195.44.218:8080/register', materia);
+    return this._httpClient.post('http://localhost:8080/pantera/register', materia);
   }
 
 
   deleteMateria(materia: Pantera) {
-    return this._httpClient.delete('http://10.195.44.218:8080/pantera/' + materia.id);
+    return this._httpClient.delete('http://localhost:8080/pantera/delete/' + materia.id);
   }
 
-  getToken(materia: Pantera){
-    return this._httpClient.post('http://100.96.1.4:8080/authenticate', materia)
+  maxId(){
+    return this._httpClient.get<number>('http://localhost:8080/pantera/maxId');
   }
 
-  login(materia: Pantera){
+  
+  login(pantera: Pantera){
     var pass: boolean = false;
+    
+    /*
     this.getToken(materia).subscribe(response => {
       localStorage.setItem('token', JSON.parse(JSON.stringify(response)).token);
       pass = true;
     });
     localStorage.getItem('token') != null ? pass = true : pass = false;
+    */
+
+    //Buscar en en arreglo de panteras
+    
+    this.panteraLogin = pantera;
+    this.panteras.find(p => pantera.username == p.username) ? pass = true : pass = false;
+
     return pass;
+  }
+  validarLogin(){
+    var pass: boolean = false;
+
+    this.panteras.find(p => this.panteraLogin.username == p.username) ? pass = true : pass = false;
+
+    return pass;
+  }
+
+
+  getToken(materia: Pantera){
+    return this._httpClient.post('http://localhost:8080/authenticate', materia)
   }
 
   // Make headers to send token for the request
@@ -86,7 +116,9 @@ export class MicroServicioPanteraService {
   }
 
   validarToken(){
-    var pass: boolean = false;
+    var pass: boolean = true;
+    /*
+    
     this.protectedRequestALL().subscribe(response => {
       
       if(response.values != null){
@@ -96,6 +128,10 @@ export class MicroServicioPanteraService {
       }
 
     });
+    
+    
+    */
+   
     
     return pass;
   }

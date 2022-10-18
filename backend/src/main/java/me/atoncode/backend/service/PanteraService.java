@@ -11,7 +11,10 @@ public class PanteraService {
     @Autowired
     private PanteraInterface panteraInterface;
 
-    public List<Pantera> BuscarTodos() {return panteraInterface.findAll();}
+    public List<Pantera> BuscarTodos() {
+        return panteraInterface.findAll();
+    }
+    
     public Pantera BuscarPantera(int id) {
         return panteraInterface.findById(id).orElse(null);
     }
@@ -24,5 +27,9 @@ public class PanteraService {
             return true;
         }
         return false;
+    }
+
+    public int NumeroPanteras() {
+        return panteraInterface.findAll().size();
     }
 }

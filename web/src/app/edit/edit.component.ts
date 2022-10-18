@@ -11,7 +11,7 @@ import { MicroServicioPanteraService } from '../services/micro-servicio-pantera.
 })
 export class EditComponent implements OnInit {
   materia: Pantera = new Pantera("4","hello", "world");
-  _materiaService: MicroServicioPanteraService | undefined;
+  _materiaService: MicroServicioPanteraService;
   
   constructor(_materiaService: MicroServicioPanteraService, private router: Router) {
     
@@ -19,11 +19,11 @@ export class EditComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   onSubmit(f: NgForm) {
-    var _materia: Pantera  = new Pantera(f.value.id, f.value.username, f.value.password);
+    var _materia: Pantera  = new Pantera(this._materiaService?.panteraEditar.id, f.value.username, f.value.password);
     this.materia = _materia;
     this._materiaService?.addMateria(this.materia).subscribe();
 

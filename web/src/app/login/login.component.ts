@@ -31,35 +31,22 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    var _materia: Pantera  = new Pantera("", f.value.username, f.value.password);
-    console.log(_materia.username);
-    console.log(_materia.password);
+    var _pantera: Pantera  = new Pantera("", f.value.username, f.value.password);
+    console.log(_pantera.username);
+    console.log(_pantera.password);
 
-    if(this._materiaService?.login(_materia)==true){
+    if(this._materiaService?.login(_pantera) == true){
 
       this.router.navigate(['home']);
       console.log(localStorage.getItem("token"));
-      console.log("Login correcto", this._materiaService.login(_materia));
+      console.log("Login correcto", this._materiaService.login(_pantera));
+      
 
     }else{
       console.log("Login incorrecto");
       this.router.navigate(['login']);
     }
 
-
-    /**
-     * 
-     this._materiaService?.getMateria(_materia.id).subscribe(x => this.materia = x);
-
-    if(this.materia.id == f.value.id){
-      this.router.navigate(['home']);
-    }
-    else{
-      this.router.navigate(['login']);
-    }
-     */
-    
-    
     
   }
 

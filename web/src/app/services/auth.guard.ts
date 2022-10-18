@@ -20,7 +20,9 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    if (this.microServicioPanteraService?.validarToken() == true) {
+    var pass: boolean = false;
+    /**
+     * if (this.microServicioPanteraService?.validarToken() == true) {
       
       return true;
     }else{
@@ -29,9 +31,21 @@ export class AuthGuard implements CanActivate {
     }
 
     return false;
+     */
+
+    if(this.microServicioPanteraService?.validarLogin() == true){
+      pass = true;
+    }else{
+      alert('You need to login first');
+      this.router?.navigate(['/login']);
+      pass = false;
+    }
+    return pass;
   }
   
 }
+
+
 function toast(arg0: string) {
   throw new Error('Function not implemented.');
 }
