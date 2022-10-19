@@ -26,6 +26,7 @@ export class EditComponent implements OnInit {
     var _materia: Pantera  = new Pantera(this._materiaService?.panteraEditar.id, f.value.username, f.value.password);
     this.materia = _materia;
     this._materiaService?.addMateria(this.materia).subscribe();
+    this.router.navigate(['/home']);
 
     console.log(f.value);  // { first: '', last: '' }
     console.log(this.materia.id);

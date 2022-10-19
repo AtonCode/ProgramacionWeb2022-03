@@ -26,19 +26,35 @@ export class HomeComponent implements OnInit {
     
   }
   buttonClick_edit(panteraEditar: Pantera){
-    //Redirigir a componete edit
-    this.router.navigate(['edit']);
-    //Enviar panteraEditar a editar
-    this._materiaService.panteraEditar = panteraEditar;
+
+    if (confirm('Are you sure you want to edit this?') == true) {
+      //Redirigir a componete edit
+      this.router.navigate(['edit']);
+      //Enviar panteraEditar a editar
+      this._materiaService.panteraEditar = panteraEditar;
+      
+    }else{
+      console.log("No se edito");
+    }
+    
 
     
   }
   buttonClick_eliminar(materia: Pantera){
-    console.log(materia.username);
-    //Eliminar de la base de datos
-    var NewMateria = new Pantera(materia.id, materia.username, materia.password);
-    this._materiaService.deleteMateria(NewMateria).subscribe();
-    this.materias = this.materias.filter(c => c.id !== NewMateria.id);
+    
+
+    if (confirm('Are you sure you want to delete this?') == true) {
+      console.log(materia.username);
+      //Eliminar de la base de datos
+      var NewMateria = new Pantera(materia.id, materia.username, materia.password);
+      this._materiaService.deleteMateria(NewMateria).subscribe();
+      this.materias = this.materias.filter(c => c.id !== NewMateria.id);
+      console.log("Se elimino");
+      
+    }else{
+      console.log("No se elimino");
+    }
+    
 
   }
   buttonClick_register(){
