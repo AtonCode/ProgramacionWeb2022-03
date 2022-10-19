@@ -11,8 +11,7 @@ export class NabvarComponent implements OnInit {
 
 
   constructor(private router: Router) { 
-    this.pageTitle = router.url.replace("/", "").toUpperCase();
-  }
+    this.pageTitle = router.url.replace("/", "");  }
 
   ngOnInit(): void {
   }

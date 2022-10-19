@@ -51,14 +51,15 @@ export class MicroServicioPanteraService {
     //Buscar en en arreglo de panteras
     
     this.panteraLogin = pantera;
+    localStorage.setItem('token', "ok");
     this.panteras.find(p => pantera.username == p.username) ? pass = true : pass = false;
 
     return pass;
   }
   validarLogin(){
     var pass: boolean = false;
-
-    this.panteras.find(p => this.panteraLogin.username == p.username) ? pass = true : pass = false;
+    localStorage.getItem('token') != null ? pass = true : pass = false;
+    
 
     return pass;
   }

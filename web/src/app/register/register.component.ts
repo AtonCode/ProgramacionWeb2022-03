@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
     this.materia = _materia;
     this._materiaService?.addMateria(this.materia).subscribe();
     this.router.navigate(['/home']);
+    
    
 
     console.log(f.value);  // { first: '', last: '' }

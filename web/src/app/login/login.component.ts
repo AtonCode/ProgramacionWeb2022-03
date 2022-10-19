@@ -44,7 +44,10 @@ export class LoginComponent implements OnInit {
 
     }else{
       console.log("Login incorrecto");
-      this.router.navigate(['login']);
+      //recargar pagina
+      
+      this.router.navigate(['register']);
+      
     }
 
     
