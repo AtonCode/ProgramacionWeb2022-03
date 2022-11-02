@@ -7,6 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class UserPantera {
 	private int id;
 	private String username;
