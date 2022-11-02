@@ -15,7 +15,6 @@ public class Producto {
     @Id
     private int id;
     private String nombre;
-    private String precio;
     private String existencias;
 
 }
