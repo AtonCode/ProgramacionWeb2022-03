@@ -19,4 +19,5 @@ public class Pantera {
     private String username;
     @JsonIgnore
     private String password;
+    private String productos;
 }
