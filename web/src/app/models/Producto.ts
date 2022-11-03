@@ -1,9 +1,9 @@
 export class Producto{
-    id:String;
-    nombre:String;
-    existencias:String;
+    id:string;
+    nombre:string;
+    existencias:string;
 
-    constructor(_id:String, _nombre:String, _existencias:String){
+    constructor(_id:string, _nombre:string, _existencias:string){
         this.id=_id;
         this.nombre=_nombre;
         this.existencias=_existencias;

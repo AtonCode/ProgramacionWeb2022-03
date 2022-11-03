@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MicroServicioPanteraService } from '../services/micro-servicio-pantera.service';
-import { Pantera } from '../models/Pantera';
+import { MicroServicioProductoService } from '../services/micro-servicio-producto.service';
+import { Producto } from '../models/Producto';
 
 @Component({
   selector: 'app-home',
@@ -9,46 +9,35 @@ import { Pantera } from '../models/Pantera';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  _materiaService: MicroServicioPanteraService;
+  _materiaService: MicroServicioProductoService;
   title = 'app';
-  materias: Pantera[]=[];
+  productos: Producto[]=[];
   pageTitle: string;
   
   
-  constructor(_materiaService: MicroServicioPanteraService, private router: Router) { 
+  constructor(_materiaService: MicroServicioProductoService, private router: Router) { 
     this._materiaService = _materiaService;
-    _materiaService.getAll().subscribe(res => this.materias = res);
-    //_materiaService.protectedRequestALL().subscribe(res => this.materias = res);
+    
     this.pageTitle = router.url.replace("/", "").toUpperCase();
+    this.cargarProductos();
+
    
   }
   ngOnInit(): void {
     
   }
-  buttonClick_edit(panteraEditar: Pantera){
-
-    if (confirm('Are you sure you want to edit this?') == true) {
-      //Redirigir a componete edit
-      this.router.navigate(['edit']);
-      //Enviar panteraEditar a editar
-      this._materiaService.panteraEditar = panteraEditar;
-      
-    }else{
-      console.log("No se edito");
-    }
-    
-
-    
+  cargarProductos(): void {
+    this._materiaService.getAll().subscribe(res => this.productos = res);
   }
-  buttonClick_eliminar(materia: Pantera){
+  buttonClick_eliminar(materia: Producto){
     
 
     if (confirm('Are you sure you want to delete this?') == true) {
-      console.log(materia.username);
+   //   console.log(materia.nombre);
       //Eliminar de la base de datos
-      var NewMateria = new Pantera(materia.id, materia.username, materia.password);
-      this._materiaService.deleteMateria(NewMateria).subscribe();
-      this.materias = this.materias.filter(c => c.id !== NewMateria.id);
+      var NewMateria = new Producto(materia.id, materia.nombre, materia.existencias);
+      this._materiaService.deleteProducto(NewMateria).subscribe();
+      this.productos = this.productos.filter(c => c.id !== NewMateria.id);
       console.log("Se elimino");
       
     }else{
@@ -57,8 +46,27 @@ export class HomeComponent implements OnInit {
     
 
   }
+  buttonClick_comprar(materia: Producto){
+    if (confirm('Seguro que desea comprar el producto?') == true) {
+    const num =parseInt(materia.existencias)-1;
+    if(num==0){
+      this._materiaService.deleteProducto(materia).subscribe();
+    }
+   else{
+    const NewProducto={id: materia.id,nombre: materia.nombre,existencias: num.toString()};
+    this._materiaService.addProducto(NewProducto).subscribe(  
+      data => {
+        this.cargarProductos();
+      },
+    );
+  }
+}else{
+  console.log("No se compro");
+    
+}
+  }
+    
   buttonClick_register(){
-    //Redirigir a componete edit
     this.router.navigate(['register']);
     
   }

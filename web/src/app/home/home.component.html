@@ -5,17 +5,20 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
-        <th scope="col">Options</th>
+        <th scope="col">Existencias</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let materia of materias ">
-        <td>{{materia.id}}</td>
-        <td>{{materia.username}}</td>
-        <td><button id="button_delate" (click)="buttonClick_eliminar(materia)">Delete</button></td>
-        <td><button id="button_edit" (click)="buttonClick_edit(materia)">Edit</button></td>
+      <tr *ngFor="let producto of productos ">
+        <td>{{producto.id}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.existencias}}</td>
+        <td><button id="button_delate" (click)="buttonClick_eliminar(producto)">Delete</button></td>
+        <td><button id="button_delate" (click)="buttonClick_comprar(producto)">Comprar</button></td>
+        <!--<td><button id="button_edit" (click)="buttonClick_edit(materia)">Edit</button></td>-->
       </tr>
     </tbody>
 </table>
 
-<button id="button_add" (click)="buttonClick_register()">Add</button>
+<button id="button_add" (click)="buttonClick_register()">Registrarse</button>
+<button id="button_add" (click)="buttonClick_register()">Añadir Producto</button>
