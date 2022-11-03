@@ -1,6 +1,0 @@
-/home/override/Github/ProgramacionWeb2022-03/backend/src/main/java/me/atoncode/backend/config/CorsConfig.java
-/home/override/Github/ProgramacionWeb2022-03/backend/src/main/java/me/atoncode/backend/BackendApplication.java
-/home/override/Github/ProgramacionWeb2022-03/backend/src/main/java/me/atoncode/backend/controllers/PanteraController.java
-/home/override/Github/ProgramacionWeb2022-03/backend/src/main/java/me/atoncode/backend/model/Pantera.java
-/home/override/Github/ProgramacionWeb2022-03/backend/src/main/java/me/atoncode/backend/repository/PanteraInterface.java
-/home/override/Github/ProgramacionWeb2022-03/backend/src/main/java/me/atoncode/backend/service/PanteraService.java

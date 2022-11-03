@@ -1,7 +1,0 @@
-me/atoncode/backend/controllers/PanteraController.class
-me/atoncode/backend/repository/PanteraInterface.class
-me/atoncode/backend/config/CorsConfig$1.class
-me/atoncode/backend/BackendApplication.class
-me/atoncode/backend/model/Pantera.class
-me/atoncode/backend/service/PanteraService.class
-me/atoncode/backend/config/CorsConfig.class

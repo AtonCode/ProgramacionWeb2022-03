@@ -6,13 +6,14 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class MicroServicioProductoService {
+  productos: Producto[] = [];
 
 
   constructor(private _httpClient: HttpClient) {
- 
+
   }
 
-  getAll() {
+  getProductos() {
     return this._httpClient.get<Producto[]>('http://localhost:8080/producto');
   }
 

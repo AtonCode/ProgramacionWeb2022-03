@@ -16,24 +16,24 @@ export class MicroServicioPanteraService {
   }
 
   getAll() {
-    return this._httpClient.get<Pantera[]>('http://localhost:8080/pantera');
+    return this._httpClient.get<Pantera[]>('http://100.96.1.18:8080/pantera');
   }
 
   getMateria(id: String) {
-    return this._httpClient.get<Pantera>('http://localhost:8080/pantera/' + id);
+    return this._httpClient.get<Pantera>('http://100.96.1.18:8080/pantera/' + id);
   }
 
-  addMateria(materia: Pantera) {
-    return this._httpClient.post('http://localhost:8080/pantera/register', materia);
+  addMateria(pantera: Pantera) {
+    return this._httpClient.post('http://100.96.1.18:8080/pantera/register', pantera);
   }
 
 
-  deleteMateria(materia: Pantera) {
-    return this._httpClient.delete('http://localhost:8080/pantera/delete/' + materia.id);
+  deleteMateria(pantera: Pantera) {
+    return this._httpClient.delete('http://100.96.1.18:8080/pantera/delete/' + pantera.id);
   }
 
   maxId(){
-    return this._httpClient.get<number>('http://localhost:8080/pantera/maxId');
+    return this._httpClient.get<number>('http://100.96.1.18:8080/pantera/maxId');
   }
 
   
@@ -59,8 +59,6 @@ export class MicroServicioPanteraService {
   validarLogin(){
     var pass: boolean = false;
     localStorage.getItem('token') != null ? pass = true : pass = false;
-    
-
     return pass;
   }
 

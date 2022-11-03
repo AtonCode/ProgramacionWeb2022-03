@@ -35,7 +35,14 @@ export class RegisterComponent implements OnInit {
     var _materia: Pantera  = new Pantera(this.maxId.toString(), f.value.username, f.value.password);
     this.materia = _materia;
     this._materiaService?.addMateria(this.materia).subscribe();
-    this.router.navigate(['/home']);
+    
+    if(this._materiaService?.login(this.materia)){
+      console.log("Registro correcto");
+      this.router.navigate(['/home']);
+    }else{
+      console.log("Registro Incorrecto");
+      this.router.navigate(['/register']);
+    }
     
    
 
