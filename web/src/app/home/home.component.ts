@@ -50,7 +50,11 @@ export class HomeComponent implements OnInit {
     if (confirm('Seguro que desea comprar el producto?') == true) {
     const num =parseInt(materia.existencias)-1;
     if(num==0){
-      this._materiaService.deleteProducto(materia).subscribe();
+      this._materiaService.deleteProducto(materia).subscribe(
+        data => {
+          this.cargarProductos();
+        },
+      );
     }
    else{
     const NewProducto={id: materia.id,nombre: materia.nombre,existencias: num.toString()};
