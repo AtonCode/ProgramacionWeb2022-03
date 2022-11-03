@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import { AuthGuard } from './services/auth.guard';
 import { Page404Component } from './page404/page404.component';
-import { RegisterProductComponent } from './register-product/register-product.component';
+import { NewproductComponent } from './newproduct/newproduct.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +24,15 @@ import { RegisterProductComponent } from './register-product/register-product.co
     EditComponent,
     SearchComponent,
     Page404Component,
-    RegisterProductComponent
+    NewproductComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

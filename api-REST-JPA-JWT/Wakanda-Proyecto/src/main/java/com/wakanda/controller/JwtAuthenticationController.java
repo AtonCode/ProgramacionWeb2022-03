@@ -1,8 +1,6 @@
 package com.wakanda.controller;
 
 import java.util.List;
-import java.util.Objects;
-
 import com.wakanda.model.Pantera;
 import com.wakanda.service.PanteraService;
 import org.springframework.beans.factory.annotation.Autowired;

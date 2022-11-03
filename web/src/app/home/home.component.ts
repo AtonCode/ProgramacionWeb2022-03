@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MicroServicioProductoService } from '../services/micro-servicio-producto.service';
+import { Pantera } from '../models/Pantera';
 import { Producto } from '../models/Producto';
+import { MicroServicioPanteraService } from '../services/micro-servicio-pantera.service';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +10,19 @@ import { Producto } from '../models/Producto';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  _materiaService: MicroServicioProductoService;
+  _materiaService: MicroServicioPanteraService;
   title = 'app';
   productos: Producto[]=[];
+  carrito:Producto []=[];
   pageTitle: string;
+  panteraLoginName: String = "";
 
 
-  constructor(_materiaService: MicroServicioProductoService, private router: Router) {
+  constructor(_materiaService: MicroServicioPanteraService, private router: Router) {
     this._materiaService = _materiaService;
-
     this.pageTitle = router.url.replace("/", "").toUpperCase();
     this.cargarProductos();
+    this.panteraLoginName = this._materiaService.panteraLogin.username;
 
 
   }
@@ -53,6 +56,7 @@ export class HomeComponent implements OnInit {
       this._materiaService.deleteProducto(materia).subscribe(
         data => {
           this.cargarProductos();
+          this.carrito.push(materia);
         },
       );
     }
@@ -61,6 +65,7 @@ export class HomeComponent implements OnInit {
     this._materiaService.addProducto(NewProducto).subscribe(
       data => {
         this.cargarProductos();
+        this.carrito.push(materia);
       },
     );
   }
@@ -71,7 +76,6 @@ export class HomeComponent implements OnInit {
   }
 
   buttonClick_register(){
-    this.router.navigate(['register']);
-
+    this.router.navigate(['edit']);
   }
 }

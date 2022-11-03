@@ -8,24 +8,4 @@ export class Pantera{
         this.username=_nombre;
         this.password=_contrasena;
     }
-
-    getId(){
-        return this.id;
-    }
-    getUsername(){
-        return this.username;
-    }
-    getPassword(){
-        return this.password;
-    }
-    setId(_id:String){
-        this.id=_id;
-    }
-    setUsername(_nombre:String){
-        this.username=_nombre;
-    }
-    setPassword(_contrasena:String){
-        this.password=_contrasena;
-    }
-    
 }

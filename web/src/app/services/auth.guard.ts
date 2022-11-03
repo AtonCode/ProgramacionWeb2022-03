@@ -17,32 +17,18 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
+    route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     var pass: boolean = false;
-    /**
-     * if (this.microServicioPanteraService?.validarToken() == true) {
-      
-      return true;
-    }else{
-      //alert('You need to login first');
-     this.router?.navigate(['/login']);     
-    }
-
-    return false;
-     */
 
     if(this.microServicioPanteraService?.validarLogin() == true){
       pass = true;
     }else{
-      alert('You need to login first');
+      alert("No tienes permisos para acceder a esta página");
       this.router?.navigate(['/login']);
       pass = false;
     }
-    return pass;
+      return pass;
   }
-  
 }
 
 
