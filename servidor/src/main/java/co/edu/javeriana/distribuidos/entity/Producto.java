@@ -22,4 +22,12 @@ public class Producto {
         this.nombre = nombre;
         this.existencias = Existencias;
     }
+
+    public void setCantidad(float i) {
+        this.existencias = i;
+    }
+
+    public float getCantidad() {
+        return this.existencias;
+    }
 }

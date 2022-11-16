@@ -34,4 +34,9 @@ public class Usuario {
         this.email = email;
         this.password = password;
     }
+
+    // Set roles
+    public void setRol(Rol rol) {
+        this.roles.add(rol);
+    }
 }

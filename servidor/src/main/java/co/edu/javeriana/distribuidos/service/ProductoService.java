@@ -28,6 +28,11 @@ public class ProductoService {
         return productoRepository.findByNombre(nombre);
     }
 
+    public int getIdByNombre(String nombre){
+        Optional<Producto> p = productoRepository.findByNombre(nombre);
+        return p.get().getId();
+    }
+
     public void  save(Producto producto){
         productoRepository.save(producto);
     }
